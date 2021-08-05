@@ -20,8 +20,8 @@ class App extends Component {
 //DISHES becomed the part of component
     this.state={
      dishesInApp:DISHES,
-  //   colorTable: {},
-  //   selectDish:null
+   // colorTable: {},
+    selectDish:null
 
     }
     // for( var item in this.state.dishesInApp){
@@ -63,7 +63,7 @@ class App extends Component {
 
   render() {
 
-  //
+
   //   const dish =  this.state.dishesInApp.map( (item)=>{
   //       return (
   //             <div key={item.id}>
@@ -107,6 +107,8 @@ class App extends Component {
         </Navbar>
 
        <Menu dishes={this.state.dishesInApp}/>
+
+
 
         </div>
 
