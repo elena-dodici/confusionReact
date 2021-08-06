@@ -20,14 +20,14 @@ class App extends Component {
 //DISHES becomed the part of component
     this.state={
      dishesInApp:DISHES,
-   // colorTable: {},
-    selectDish:null
+     colorTable: {},
+     selectDish:null
 
     }
-    // for( var item in this.state.dishesInApp){
-    //     let dish = this.state.dishesInApp[item]
-    //     this.state.colorTable[dish.id] ='blue'
-    // }
+    for( var item in this.state.dishesInApp){
+        let dish = this.state.dishesInApp[item]
+        this.state.colorTable[dish.id] ='blue'
+    }
 
 
   }
@@ -43,56 +43,56 @@ class App extends Component {
    this.setState({dishesInApp:updatedList});
  }
 
- // selectDish(dish){
- //
- //   this.setState({selectDish:dish});
- //
- //   var color = this.state.colorTable[dish.id];
- //
- //   if(color==='red'){
- //     //this.setState({colorTable:this.state.colorTable.map((color,id)=>id=='red'? color:{...color,id:'blue'}) })
- //     this.state.colorTable[dish.id]='blue';
- //   }
- //   else{
- //     this.state.colorTable[dish.id]='red';
- //   }
- //
- //   }
+ selectDish(dish){
+
+   this.setState({selectDish:dish});
+
+   var color = this.state.colorTable[dish.id];
+
+   if(color==='red'){
+     //this.setState({colorTable:this.state.colorTable.map((color,id)=>id=='red'? color:{...color,id:'blue'}) })
+     this.state.colorTable[dish.id]='blue';
+   }
+   else{
+     this.state.colorTable[dish.id]='red';
+   }
+
+   }
 
 
 
   render() {
 
 
-  //   const dish =  this.state.dishesInApp.map( (item)=>{
-  //       return (
-  //             <div key={item.id}>
-  //                 <p style={{color:this.state.colorTable[item.id]}}>{item.price}</p>
-  //                 <p>{this.state.colorTable[item.id]}</p>
-  //                 <p>{item.category}</p>
-  //                 <span>
-  //                   <button
-  //                    // This syntax ensures `this` is bound within handleClick
-  //                    //arrow function can do the bind automatically
-  //                    onClick={() => this.onDissmiss(item.id)}
-  //                     type="button"
-  //                   >
-  //                   Dissmiss
-  //                   </button>
-  //                 </span>
-  //                   <div>
-  //                    <button
-  //                    onClick={() => this.selectDish(item)}
-  //                    type="button"
-  //                    >
-  //                    ChangeColor
-  //                    </button>
-  //                   </div>
-  //                </div>
-  //       )
-  //
-  //
-  // });
+    const dish =  this.state.dishesInApp.map( (item)=>{
+        return (
+              <div key={item.id}>
+                  <p style={{color:this.state.colorTable[item.id]}}>{item.price}</p>
+                  <p>{this.state.colorTable[item.id]}</p>
+                  <p>{item.category}</p>
+                  <span>
+                    <button
+                     // This syntax ensures `this` is bound within handleClick
+                     //arrow function can do the bind automatically
+                     onClick={() => this.onDissmiss(item.id)}
+                      type="button"
+                    >
+                    Dissmiss
+                    </button>
+                  </span>
+                    <div>
+                     <button
+                     onClick={() => this.selectDish(item)}
+                     type="button"
+                     >
+                     ChangeColor
+                     </button>
+                    </div>
+                 </div>
+        )
+
+
+  });
 
 
 
@@ -108,8 +108,9 @@ class App extends Component {
 
        <Menu dishes={this.state.dishesInApp}/>
 
-
-
+         <div className='App'>}
+           {dish}
+         </div>
         </div>
 
       );
