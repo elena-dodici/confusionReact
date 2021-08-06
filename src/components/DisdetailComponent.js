@@ -1,22 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Card, CardImg,  CardText, CardBody,
     CardTitle } from 'reactstrap';
 
-class DishDetail extends Component {
-  constructor(a){
-    super(a);
 
-    this.renderDish = this.renderDish.bind(this);
-    this.renderComments = this.renderComments.bind(this);
-    this.formateDate = this.formateDate.bind(this);
-
-
-  }
+  // constructor(a){
+  //   super(a);
+  //   this.renderDish = this.renderDish.bind(this);
+  //   this.renderComments = this.renderComments.bind(this);
+  //   this.formateDate = this.formateDate.bind(this);
+  //console.log(this.props)
+  // }
 
 
 
-  renderDish(dish){
 
+  function RenderDish({dish}){
     if(dish !=null){
       return(
         <Card >
@@ -37,59 +35,58 @@ class DishDetail extends Component {
   }
 
 
-formateDate(date){
-  const options = { year: "numeric", month: "short", day: "numeric" };
-  return  new Date(date).toLocaleDateString('en-US',options);
-
-
-}
-
-renderComments(dish){
-
-    if(dish!=null){
-
-        return(
-            dish.comments.map((com)=>
-              <ul key={com.id} className="list-unstyled">
-                <li >{com.comment}
-                </li>
-                <li>
-                  -- {com.author}{" "}{this.formateDate(com.date)}
-                </li>
-              </ul>
-            )
-        )
-
-    }
-
-}
-
-
-    render() {
- //console.log('render is invoked');
-      if(this.props.selectDish!=null){
-        return (
-          <div className = 'container'>
-              <div className= 'row '>
-                  <div className="col-12 col-md-5 m-1">
-                      {this.renderDish(this.props.selectDish)}
-                  </div>
-                  <div className="col-12 col-md-5 m-1">
-                    <h4>Comments</h4>
-                      {this.renderComments(this.props.selectDish)}
-                  </div>
-               </div>
-          </div>
-
-      );
-    }
-
-    else{
-      return(
-        <div></div>
-      )
-    }
+  function FormateDate({date}){
+    const options = { year: "numeric", month: "short", day: "numeric" };
+    return  new Date(date).toLocaleDateString('en-US',options);
   }
-}
+
+
+  function RenderComments({dish}){
+      if(dish!=null){
+         return(
+              dish.comments.map((com)=>
+                <ul key={com.id} className="list-unstyled">
+                  <li >{com.comment}
+                  </li>
+                  <li>
+                    -- {com.author}{" "}<FormateDate date={com.date}/>
+                  </li>
+                </ul>
+              )
+          )
+      }
+  }
+
+
+
+
+ const DishDetail =(props)=>{
+
+        if(props.dish!=null){
+          return (
+            <div className = 'container'>
+                <div className= 'row '>
+                    <div className="col-12 col-md-5 m-1">
+                        <RenderDish dish={props.dish}/>
+                    </div>
+                    <div className="col-12 col-md-5 m-1">
+                      <h4>Comments</h4>
+                        <RenderComments dish={props.dish}/>
+                    </div>
+                 </div>
+            </div>
+
+        );
+      }
+
+      else{
+        return(
+          <div></div>
+        )
+      }
+      }
+
+
+
 
 export default DishDetail;

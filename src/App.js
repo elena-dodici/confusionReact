@@ -1,47 +1,48 @@
 //import logo from './logo.svg';
 import './App.css';
-import Menu from './components/MenuComponents';
+//import Menu from './components/MenuComponents';
+import Main from './components/MainComponents';
 
 
 //That App function is a valid React component.
 
 //import {Navbar} from 'bootstrap';
-import { Navbar ,NavbarBrand} from 'reactstrap';
+//import { Navbar ,NavbarBrand} from 'reactstrap';
 import React, { Component } from 'react';
-import {DISHES} from './shared/dishes';
+//import {DISHES} from './shared/dishes';
 
 
 class App extends Component {
 //store the state
 
-  constructor(props){
+  // constructor(props){
 //initialize the state so in render could use state
-    super(props);
+    // super(props);
 //DISHES becomed the part of component
-    this.state={
-     dishesInApp:DISHES,
+    // this.state={
+    // dishesInApp:DISHES,
    // colorTable: {},
-    selectDish:null
+   //selectDish:null
 
-    }
+    // }
     // for( var item in this.state.dishesInApp){
     //     let dish = this.state.dishesInApp[item]
     //     this.state.colorTable[dish.id] ='blue'
     // }
 
 
-  }
+  // }
 
 
- onDissmiss(id){
-
-   function isNotId(item){
-      return  item.id !== id;
-   }
-
-   const updatedList = this.state.dishesInApp.filter (isNotId);
-   this.setState({dishesInApp:updatedList});
- }
+ // onDissmiss(id){
+ //
+ //   function isNotId(item){
+ //      return  item.id !== id;
+ //   }
+ //
+ //   const updatedList = this.state.dishesInApp.filter (isNotId);
+ //   this.setState({dishesInApp:updatedList});
+ // }
 
  // selectDish(dish){
  //
@@ -99,18 +100,9 @@ class App extends Component {
 
     return (
 
-      <div >
-        <Navbar dark color="primary">
-          <div className="container">
-            <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
-          </div>
-        </Navbar>
-
-       <Menu dishes={this.state.dishesInApp}/>
-
-
-
-        </div>
+             <div className='App'>
+                 <Main />
+             </div>
 
       );
    }
